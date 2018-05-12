@@ -10,19 +10,29 @@
 <script type="text/javascript">
 
 $(function(){
-	var tipMess = $("#tipMess").attr("value");
-	if(tipMess!="null" && tipMess!=""){
+	var tipMess = $("#tipMess").val();
+	if(tipMess!="null" & tipMess!=""){
+		$("#tipMess").val("");
 		alert(tipMess);
 	}
+	tipMess="";
 })
 </script>
 </head>
 <body>
+test---${sessionScope.tipMess }
 <input type="hidden" value="${sessionScope.tipMess }" id="tipMess"/>
-<c:remove var="tipMess" scope="session"/>
+<c:remove var="tipMess"/>
 <c:if test="${not empty sessionScope.admin }">
 	${sessionScope.admin.adminName }
 </c:if>
+<c:if test="${not empty sessionScope.admin }">
+	管理员已登录 <a href="<%=request.getContextPath() %>/adminLogout">退出登录</a>
+</c:if>
+<c:if test="${empty sessionScope.admin }">
+	管理员未登录，请<a href="<%=request.getContextPath() %>/adminLogin">登录</a>后进行操作
+</c:if>
+<br/><br/>
 管理员界面
 <a href="<%=request.getContextPath()%>/theme?target=1">添加主题</a>
 <table>

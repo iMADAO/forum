@@ -34,6 +34,7 @@
 /mnt/disk2/myworkspace/myproject/src/main/java/com/project/bean/BarTheme.java
 /mnt/disk2/myworkspace/myproject/src/main/java/com/project/filter/FirstPageFilter.java
 /mnt/disk2/myworkspace/myproject/src/main/java/com/project/service/CategoryService.java
+/mnt/disk2/myworkspace/myproject/src/main/java/com/project/handler/AdminLogoutServlet.java
 /mnt/disk2/myworkspace/myproject/src/main/java/com/project/util/ReflectionUtils.java
 /mnt/disk2/myworkspace/myproject/src/main/java/com/project/service/PostService.java
 /mnt/disk2/myworkspace/myproject/src/main/java/com/project/dao/MessPicDAO.java

@@ -4,6 +4,7 @@ com/project/bean/Category.class
 com/project/bean/Reply.class
 com/project/service/MessageService.class
 com/project/bean/User.class
+com/project/handler/AdminLogoutServlet.class
 com/project/handler/ThemeServlet.class
 com/project/dao/impl/PostDAOImpl.class
 com/project/handler/RegisterServlet.class

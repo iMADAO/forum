@@ -15,5 +15,18 @@
 <form>
 <input type="text" value="abc" class="h"/>
 </form>
+<table border=1>
+	<tr>
+	<td rowspan="2"><img src="" alt="non"></td>
+		<td>aa</td>
+		<td>bb</td>
+		
+	</tr>
+	<tr>
+		<td>cc</td>
+		<td>dd</td>
+	</tr>
+	
+</table>
 </body>
 </html>

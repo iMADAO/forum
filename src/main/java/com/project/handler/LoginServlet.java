@@ -114,6 +114,7 @@ public class LoginServlet extends HttpServlet {
 			System.out.println("保存cookie---------------------");
 		}
 		
+		request.getSession().removeAttribute("admin");
 		request.getSession().setAttribute("tipMess", "登录成功");
 		if(lastPage!=null && lastPage!=""){
 			response.sendRedirect(lastPage);

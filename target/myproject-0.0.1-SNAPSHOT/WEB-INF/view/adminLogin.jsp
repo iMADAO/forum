@@ -9,10 +9,12 @@
 <script type="text/javascript" src="scripts/jquery-1.3.1.js"></script>
 <script type="text/javascript">
 $(function(){
-	var tipMess = $("#tipMess").attr("value");
-	if(tipMess!="null" && tipMess!=""){
+	var tipMess = $("#tipMess").val();
+	if(tipMess!="null" & tipMess!=""){
+		$("#tipMess").val("");
 		alert(tipMess);
 	}
+	tipMess="";
 })
 </script>
 </head>

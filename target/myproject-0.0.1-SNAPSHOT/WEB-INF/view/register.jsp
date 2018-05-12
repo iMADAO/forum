@@ -10,10 +10,12 @@
 <script type="text/javascript">
 
 $(function(){
-	var tipMess = $("#tipMess").attr("value");
-	if(tipMess!="null" && tipMess!=""){
+	var tipMess = $("#tipMess").val();
+	if(tipMess!="null" & tipMess!=""){
+		$("#tipMess").val("");
 		alert(tipMess);
 	}
+	tipMess="";
 })
 </script>
 </head>

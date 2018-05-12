@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project.bean.Admin;
 import com.project.service.AdminService;
+import com.project.service.UserService;
 
 public class AdminLoginServlet extends HttpServlet{
 	private AdminService service = new AdminService();
-	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -61,6 +61,8 @@ public class AdminLoginServlet extends HttpServlet{
 		}
 		
 		System.out.println("登录成功");
+		//普通用户退出登录
+		request.getSession().removeAttribute("user");
 		Admin admin = service.getAdminByName(adminName);
 		admin.setPassword("");
 		request.getSession().setAttribute("admin", admin);
