@@ -8,6 +8,6 @@
 </head>
 <body>
 <h4>页面不存在</h4>
-<a href="<%=request.getContextPath() %>/index.jsp">返回首页</a>
+<a href="<%=request.getContextPath() %>/index">返回首页</a>
 </body>
 </html>

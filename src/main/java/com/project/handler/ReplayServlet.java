@@ -27,7 +27,7 @@ public class ReplayServlet extends HttpServlet{
 		System.out.println("messId-----" + messId);
 		User user = (User) request.getSession().getAttribute("user");
 		if(user==null){
-			request.setAttribute("ErrorMess", "用户未登录");
+			request.getSession().setAttribute("tipMess", "用户未登录");
 			try {
 				request.getRequestDispatcher("/WEB-INF/view/reply.jsp").forward(request, response);
 			} catch (ServletException e) {

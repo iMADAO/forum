@@ -22,7 +22,7 @@ $(function(){
 <body>
 <input type="hidden" value=<%=request.getSession().getAttribute("tipMess") %> id="tipMess" />
 <c:remove var="tipMess" scope="session"/>
-<%request.getSession().setAttribute("lastPage", request.getContextPath() + "/index.jsp"); %>
+<%request.getSession().setAttribute("lastPage", request.getContextPath() + "/index"); %>
 <c:if test="${empty sessionScope.user }">
 	用户未登录
 	<a href="<%=request.getContextPath() %>/toLogin">登录</a>

@@ -43,6 +43,7 @@ public class AppendMessageServlet extends HttpServlet {
      
 		User user = (User) request.getSession().getAttribute("user");
 		if(user==null){
+			request.getSession().setAttribute("tipMess", "请先登录");
 			response.sendRedirect(request.getContextPath() + "/toLogin");
 			return;
 		}

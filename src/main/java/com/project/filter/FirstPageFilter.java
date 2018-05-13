@@ -45,32 +45,35 @@ public class FirstPageFilter implements Filter {
 		// pass the request along the filter chain
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 		HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-		Cookie[] cookies = httpServletRequest.getCookies();
-		String username = null;
-		String password =  null;
 		HttpSession session = httpServletRequest.getSession();
-		System.out.println(cookies);
-		if(cookies!=null){
-			for(Cookie cookie: cookies){
-				if(cookie.getName().equals("username"))
-					username = cookie.getValue();
-				else if(cookie.getName().equals("password")){
-					password = cookie.getValue();
+		if(session.getAttribute("user")==null){
+			Cookie[] cookies = httpServletRequest.getCookies();
+			String username = null;
+			String password =  null;
+		
+			System.out.println(cookies);
+			if(cookies!=null){
+				for(Cookie cookie: cookies){
+					if(cookie.getName().equals("username"))
+						username = cookie.getValue();
+					else if(cookie.getName().equals("password")){
+						password = cookie.getValue();
+					}
 				}
 			}
-		}
-		
-		System.out.println("username----" + username + "password----" + password);
-		if(username!=null && username!="" && password!=null && password!=""){
-			if(service.verifyPasswd(username, password)){
-				User user = service.getUserByName(username);
-				user.setPassword("");
-				session.setAttribute("user", user);
-				String lastPage = (String) session.getAttribute("lastPage");
-				if(lastPage==null || lastPage=="")
-					lastPage = httpServletRequest.getContextPath() + "/index.jsp";
-				httpServletResponse.sendRedirect(lastPage);
-				return;
+			
+			System.out.println("username----" + username + "password----" + password);
+			if(username!=null && username!="" && password!=null && password!=""){
+				if(service.verifyPasswd(username, password)){
+					User user = service.getUserByName(username);
+					user.setPassword("");
+					session.setAttribute("user", user);
+					String lastPage = (String) session.getAttribute("lastPage");
+					if(lastPage==null || lastPage=="")
+						lastPage = httpServletRequest.getContextPath() + "/index.jsp";
+					httpServletResponse.sendRedirect(lastPage);
+					return;
+				}
 			}
 		}
 		chain.doFilter(request, response);

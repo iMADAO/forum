@@ -22,7 +22,7 @@ $(function(){
 <body>
 <input type="hidden" value=<%=request.getSession().getAttribute("tipMess") %> id="tipMess" />
 <c:remove var="tipMess" scope="session"/>
-<a href="<%=request.getContextPath() %>/index.jsp">返回主页</a>&nbsp&nbsp&nbsp
+<a href="<%=request.getContextPath() %>/index">返回主页</a>&nbsp&nbsp&nbsp
 <c:if test="${not empty sessionScope.lastPage }">
 	<a href="${sessionScope.lastPage}">返回上一页</a>
 </c:if>

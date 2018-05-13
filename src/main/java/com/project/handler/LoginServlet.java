@@ -102,7 +102,8 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("登录成功");
 		User user = service.getUserByName(username);
 		user.setPassword("");
-		request.getSession().setAttribute("user", user);
+		HttpSession session = request.getSession();
+		session.setAttribute("user", user);
 		
 		if(save!=null && save.equals("on")){
 			Cookie cookieName = new Cookie("username", username);
@@ -114,12 +115,18 @@ public class LoginServlet extends HttpServlet {
 			System.out.println("保存cookie---------------------");
 		}
 		
-		request.getSession().removeAttribute("admin");
-		request.getSession().setAttribute("tipMess", "登录成功");
+		String tipMess="登录成功";
+		if(session.getAttribute("admin")!=null){
+			tipMess+="-管理员已退出登录";
+			session.removeAttribute("admin");
+		}
+		session.removeAttribute("admin");
+		session.setAttribute("tipMess", tipMess);
 		if(lastPage!=null && lastPage!=""){
 			response.sendRedirect(lastPage);
 		}else{
-			response.sendRedirect(request.getContextPath() + "/index.jsp");
+			System.out.println(request.getContextPath() + "/WEB-INF/view/index.jsp");
+			response.sendRedirect(request.getContextPath() + "/index");
 		}
 	}
 		

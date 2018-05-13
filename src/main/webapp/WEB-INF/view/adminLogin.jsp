@@ -40,9 +40,6 @@ $(function(){
 			<td><button id="refresh">刷新</button></td>
 		</tr>
 		<tr>
-			<td><input type="checkbox" name="save" checked="checked"/>保存用户名和密码</td>
-		</tr>
-		<tr>
 			<td><input type="submit" value=提交 /></td>
 		</tr>
 	</table>

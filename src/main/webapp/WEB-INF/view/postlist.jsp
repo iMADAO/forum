@@ -21,7 +21,6 @@ $(function(){
 </script>
 </head>
 <body>
-${requestScope.postDTOList }
 <input type="hidden" value=<%=request.getSession().getAttribute("tipMess") %> id="tipMess" />
 <c:remove var="tipMess" scope="session"/>
 <span>主题贴---${requestScope.category.categoryName }</span>

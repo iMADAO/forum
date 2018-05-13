@@ -33,7 +33,7 @@ $(function(){
 	用户已登录--<a href="<%=request.getContextPath()%>/myPage">${sessionScope.user.userName }</a>
 	<a href="<%=request.getContextPath() %>/logout">退出登录</a>
 </c:if>
-<a href="<%=request.getContextPath() %>/index.jsp">主页</a>
+<a href="<%=request.getContextPath() %>/index">主页</a>
 <br/><br/>
 <c:forEach items="${requestScope.messageDTOList }" var="messageDTO">
 	${messageDTO.postOrder }楼: <br/>

@@ -6,7 +6,7 @@
   </context-param>
   <error-page>
     <error-code>404</error-code>
-    <location>/WEB-INF/error.jsp</location>
+    <location>/error.jsp</location>
   </error-page>
   <servlet>
     <servlet-name>toLogin</servlet-name>
@@ -136,7 +136,6 @@
     <servlet-name>reviseMessage</servlet-name>
     <url-pattern>/reviseMessage</url-pattern>
   </servlet-mapping>
-  
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>com.project.filter.EncodingFilter</filter-class>
@@ -153,5 +152,14 @@
   <filter-mapping>
     <filter-name>FirstPageFilter</filter-name>
     <url-pattern>/index</url-pattern>
+  </filter-mapping>
+  <filter>
+    <display-name>AdminFilter</display-name>
+    <filter-name>AdminFilter</filter-name>
+    <filter-class>com.project.filter.AdminFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AdminFilter</filter-name>
+    <url-pattern>/AdminFilter</url-pattern>
   </filter-mapping>
 </web-app>

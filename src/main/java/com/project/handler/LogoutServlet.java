@@ -7,6 +7,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class LogoutServlet extends HttpServlet {
 	@Override
@@ -19,8 +20,14 @@ public class LogoutServlet extends HttpServlet {
 		cookiePassword.setMaxAge(0);
 		response.addCookie(cookieName);
 		response.addCookie(cookiePassword);
+		HttpSession session = request.getSession();
 		System.out.println("logout-----------------------------------------");
-		request.getSession().setAttribute("tipMess", "退出登录成功");
-		response.sendRedirect((String) request.getSession().getAttribute("lastPage"));
+		session.setAttribute("tipMess", "退出登录成功");
+		String lastPage = (String) session.getAttribute("lastPage");
+		if(lastPage!=null && lastPage!=""){
+			response.sendRedirect(lastPage);
+		}else{
+			response.sendRedirect(request.getContextPath() + "/index");
+		}
 	}
 }
