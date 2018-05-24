@@ -51,7 +51,5 @@ $(function(){
 </c:forEach>
 
 </table>
-<%=request.getContextPath()%>
-
 </body>
 </html>

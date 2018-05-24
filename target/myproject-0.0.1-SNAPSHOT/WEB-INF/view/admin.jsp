@@ -20,7 +20,6 @@ $(function(){
 </script>
 </head>
 <body>
-test---${sessionScope.tipMess }
 <input type="hidden" value="${sessionScope.tipMess }" id="tipMess"/>
 <c:remove var="tipMess"/>
 <c:if test="${not empty sessionScope.admin }">
