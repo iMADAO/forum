@@ -1,6 +1,7 @@
 package com.project.handler;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project.bean.Admin;
 import com.project.bean.User;
+import com.project.exception.ErrorException;
 import com.project.service.AdminService;
 import com.project.service.UserService;
 
@@ -53,32 +55,22 @@ public class AdminLoginServlet extends HttpServlet{
 			request.getRequestDispatcher("/WEB-INF/view/adminLogin.jsp").forward(request, response);
 			return;
 		}
-		
-		if(!service.checkAdmin(adminName, password)){
-			System.out.println("用户名或密码错误");
-			request.setAttribute("adminName", adminName);
+		Map<Admin, String> map = null;
+		try {
+			map = service.adminLogin(request, response, adminName, password);
+		} catch (ErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			request.setAttribute("ErrorMess", "用户名或密码错误");
 			request.getRequestDispatcher("/WEB-INF/view/adminLogin.jsp").forward(request, response);
 			return;
 		}
-		
-		System.out.println("登录成功");
-		//普通用户退出登录
-		String tipMess = "登录成功";
-		User user = (User) request.getSession().getAttribute("user");
-		if(user!=null){
-			tipMess+=",用户" + user.getUserName() + "已退出登录";
-			request.getSession().removeAttribute("user");
-			
-			Cookie cookieName = new Cookie("username", null);
-			cookieName.setMaxAge(0);
-			Cookie cookiePassword = new Cookie("password", null);
-			cookiePassword.setMaxAge(0);
-			response.addCookie(cookieName);
-			response.addCookie(cookiePassword);
+		Admin admin = null;
+		String tipMess = null;
+		for(Map.Entry<Admin, String> entry: map.entrySet()){
+			admin = entry.getKey();
+			tipMess = entry.getValue();
 		}
-		Admin admin = service.getAdminByName(adminName);
-		admin.setPassword("");
 		request.getSession().setAttribute("admin", admin);
 		request.getSession().setAttribute("tipMess", tipMess);
 		response.sendRedirect(request.getContextPath() + "/admin");

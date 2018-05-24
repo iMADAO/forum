@@ -35,23 +35,27 @@ $(function(){
 	用户已登录--${sessionScope.user.userName }
 	&nbsp&nbsp&nbsp<a href="<%=request.getContextPath() %>/logout">退出登录</a>
 </c:if>
-&nbsp
+&nbsp;
 <a href="<%=request.getContextPath()%>/forum">返回上一页</a>
 <br/><br/>
-<a href="<%=request.getContextPath() %>/addPost?categoryId=<%=request.getParameter("categoryId")%>">发帖</a><br/><br/>
+<a href="<%=request.getContextPath() %>/addPost?categoryId=<%=request.getParameter("categoryId")%>" target="_blank">发帖</a><br/><br/>
 <table>
-<c:forEach items="${requestScope.postDTOList }" var="postDTO">
+<c:forEach items="${requestScope.page.content }" var="postDTO">
 	<tr>
-		<td><a href="<%=request.getContextPath() %>/post?postId=${postDTO.postId}">${postDTO.messageDTO.messContent }</a></td>
+		<td><a href="<%=request.getContextPath() %>/post?postId=${postDTO.postId}" target="_blank">${postDTO.messageDTO.messContent }</a></td>
 	</tr>
 		<c:forEach items="${postDTO.messageDTO.picPathList }" var="picPath">
 			<tr>
-				<td><a href="<%=request.getContextPath() %>/post?postId=${postDTO.postId}"><img src="${picPath }" width="100"/></a><hr/></td>
+				<td><a href="<%=request.getContextPath() %>/post?postId=${postDTO.postId}" target="_blank"><img src="${picPath }" width="100"/></a><hr/></td>
 			</tr>
 		</c:forEach>
-	
-
 </c:forEach>
 </table>
-</body>
+<br/>
+当前第${requestScope.page.pageNo }页 共${requestScope.page.totalPage }页
+<a href="<%=request.getContextPath() %>/postList?categoryId=<%=request.getParameter("categoryId")%>&pageNo=1&pageSize=${requestScope.page.pageSize }">首页</a>
+<c:forEach items="${requestScope.page.navigatepageNums }" var="num">
+	<a href="<%=request.getContextPath() %>/postList?categoryId=<%=request.getParameter("categoryId")%>&pageNo=${num }&pageSize=${requestScope.page.pageSize }">${num }</a>
+</c:forEach>
+<a href="<%=request.getContextPath() %>/postList?categoryId=<%=request.getParameter("categoryId")%>&pageNo=${requestScope.page.totalPage }&pageSize=${requestScope.page.pageSize }">末页</a>
 </html>

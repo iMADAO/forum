@@ -13,13 +13,15 @@ public class MessageDTO {
 	private Date createTime;
 	private Date updateTime;
 	List<String> picPathList;
+	List<Reply> replyList;
+	
 	public List<String> getPicPathList() {
 		return picPathList;
 	}
 	public void setPicPathList(List<String> picPathList) {
 		this.picPathList = picPathList;
 	}
-	List<Reply> replyList;
+
 	
 	public String getUsername() {
 		return username;

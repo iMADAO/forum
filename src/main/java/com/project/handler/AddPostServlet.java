@@ -46,36 +46,7 @@ public class AddPostServlet extends HttpServlet{
 		}
 		request.getRequestDispatcher("/WEB-INF/view/addPost.jsp").forward(request, response);
 	}
-	
-//	@Override
-//	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-//			throws ServletException, IOException {
-//		String target = request.getParameter("target");
-//		System.out.println(target);
-//		
-//		InputStream in = request.getInputStream();
-//		System.out.println(in.available());
-//		String pathStr = request.getServletContext().getRealPath("/") + "/resource/image/";
-//		if(Files.notExists(Paths.get(pathStr))){
-//			Files.createDirectories(Paths.get(pathStr));
-//			System.out.println("Create Directory");
-//		}
-//		pathStr += KeyUtil.genUniquKey() + ".jpg";
-//		System.out.println(pathStr);
-//		
-//		FileOutputStream fout = new FileOutputStream(new File(pathStr));
-//		int n = in.available();
-//		byte b[] = new byte[n];
-//		in.read(b);
-//		fout.write(b);
-//		fout.flush();
-//		fout.close();
-//		in.close();
-//		
-//	}
-	
-	
-	
+		
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user = (User) request.getSession().getAttribute("user");
 		if(user==null){

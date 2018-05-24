@@ -35,7 +35,7 @@ $(function(){
 </c:if>
 <a href="<%=request.getContextPath() %>/index">主页</a>
 <br/><br/>
-<c:forEach items="${requestScope.messageDTOList }" var="messageDTO">
+<c:forEach items="${requestScope.page.content }" var="messageDTO">
 	${messageDTO.postOrder }楼: <br/>
 	${messageDTO.messContent }
 	<br/><br/>
@@ -56,6 +56,14 @@ $(function(){
 	<a href="<%=request.getContextPath() %>/reply?messageId=${messageDTO.messageId}&postId=<%=request.getParameter("postId")%>">回复</a>
 	<hr/>
 </c:forEach>
+<br/>
+当前第${requestScope.page.pageNo }页 共${requestScope.page.totalPage }页
+<a href="<%=request.getContextPath() %>/post?postId=<%=request.getParameter("postId")%>&pageNo=1&pageSize=${requestScope.page.pageSize }">首页</a>
+<c:forEach items="${requestScope.page.navigatepageNums }" var="num">
+	<a href="<%=request.getContextPath() %>/post?postId=<%=request.getParameter("postId")%>&pageNo=${num }&pageSize=${requestScope.page.pageSize }">${num }</a>
+</c:forEach>
+<a href="<%=request.getContextPath() %>/post?postId=<%=request.getParameter("postId")%>&pageNo=${requestScope.page.totalPage }&pageSize=${requestScope.page.pageSize }">末页</a>
+
 <a href="<%=request.getContextPath() %>/appendMessage?postId=<%=request.getParameter("postId") %>">我要发言</a>
 </body>
 </html>

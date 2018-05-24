@@ -6,10 +6,12 @@ import com.project.bean.Message;
 import com.project.bean.MessageDTO;
 import com.project.dao.MessageDAO;
 import com.project.dao.impl.MessageDAOImpl;
+import com.project.service.MessageService;
+import com.project.web.Page;
 
 
 public class MessageTest {
-
+	private MessageService  service = new MessageService();
 	private MessageDAO messDAO = new MessageDAOImpl();
 	@Test
 	public void testAddMess(){
@@ -53,5 +55,21 @@ public class MessageTest {
 	@Test
 	public void testGetOneMessageDTO(){
 		System.out.println(messDAO.getMessageByPostIdInOrderOne("1525445894487986043"));
+	}
+	
+	@Test
+	public void testgetMessageCountByPostId(){
+		System.out.println(messDAO.getMessageCountByPostId("1525598395029716859"));
+	}
+	
+	@Test
+	public void testgetMessageByPostIdInPage(){
+		messDAO.getMessageByPostIdInPage("1525598395029716859", 0, 10).forEach(System.out::println);;
+	}
+	
+	@Test
+	public void testgetMessageDTOPageByPostId(){
+		Page<MessageDTO> page = service.getMessageDTOPageByPostId("1525517141937370225", 1, 5);
+		System.out.println(page);
 	}
 }

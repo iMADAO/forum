@@ -35,6 +35,7 @@ $(function(){
 	<a href="<%=request.getContextPath() %>/logout">退出登录</a>
 	<br/>
 </c:if>
+<a href="<%=request.getContextPath()%>/admin" target="_blank">管理员页面</a>
 	<input type="hidden" id="registerFlag" value="${sessionScope.registerSuccess==null ? '' : sessionScope.registerSuccess }"/>
 	<input type="hidden" id="retrieveFlag" value="${sessionScope.retrieveSuccess==null ? '' : sessionScope.retrieveSuccess }"/>
 	<c:remove var="registerSuccess" scope="session"/>

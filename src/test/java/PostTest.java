@@ -7,6 +7,7 @@ import com.project.bean.PostDTO;
 import com.project.dao.PostDAO;
 import com.project.dao.impl.PostDAOImpl;
 import com.project.service.PostService;
+import com.project.web.Page;
 
 
 public class PostTest {
@@ -68,5 +69,24 @@ public class PostTest {
 		for(PostDTO postDTO: postDTOList){
 			System.out.println(postDTO);
 		}
+	}
+	
+	@Test 
+	public void testgetPostCountByCategoryId(){
+		Long count = postDAO.getPostCountByCategoryId("101");
+		System.out.println(count);
+	}
+	
+	@Test
+	public void testgetPostListByCategoryIdInPage(){
+		List<Post> postList = postDAO.getPostListByCategoryIdInPage("1001", 3, 5);
+		postList.stream().forEachOrdered(System.out::println);
+	}
+	
+	@Test
+	public void testgetPostDTOListByCategoryInPage(){
+		Page<PostDTO> page = postService.getPostDTOListByCategoryInPage("1001", -100, 5);
+		System.out.println(page);
+		page.getContent().forEach(System.out::println);
 	}
 }

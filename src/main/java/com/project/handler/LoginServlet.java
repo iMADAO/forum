@@ -120,7 +120,6 @@ public class LoginServlet extends HttpServlet {
 			tipMess+="-管理员已退出登录";
 			session.removeAttribute("admin");
 		}
-		session.removeAttribute("admin");
 		session.setAttribute("tipMess", tipMess);
 		if(lastPage!=null && lastPage!=""){
 			response.sendRedirect(lastPage);

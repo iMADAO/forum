@@ -14,4 +14,7 @@ public interface MessageDAO {
 	Message getMessageByPostIdInOrderOne(String postId);
 	List<MessageDTO> getMessageDTOByPostId(String postId);
 	MessageDTO getMessageDTOByPostIdInOrderOne(String postId);
+	long getMessageCountByPostId(String postId);
+	List<Message> getMessageByPostIdInPage(String postId, int startRecord,
+			int size);
 }

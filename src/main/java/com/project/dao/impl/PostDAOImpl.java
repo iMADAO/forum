@@ -43,6 +43,19 @@ public class PostDAOImpl extends DAOImpl<Post> implements PostDAO{
 		return getForList(sql, userId);
 	}
 
+	@Override
+	public Long getPostCountByCategoryId(String categoryId) {
+		String sql = "select count(*) from post where category_id = ?";
+		return getForValue(sql, categoryId);
+	}
+
+	@Override
+	public List<Post> getPostListByCategoryIdInPage(String categoryId,
+			int startRecord, int size) {
+		String sql = "select post_id postId, theme_id themeId, category_id categoryId, user_id userId, create_time createTime, update_time updateTime, is_visible isVisible from post where category_id = ? limit ?, ?";
+		return getForList(sql, categoryId, startRecord, size);
+	}
+
 	
 	
 	

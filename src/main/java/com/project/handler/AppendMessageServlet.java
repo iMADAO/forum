@@ -76,7 +76,6 @@ public class AppendMessageServlet extends HttpServlet {
         
         
         System.out.println("postId=======================" + postId);
-//                                                         String userId, String userName, String theme, String postId, String messContent
         String messageId = messageService.addMessage(user.getUserId(), user.getUserName(), null, postId, messContent);
         System.out.println("messageId==========" + messageId);
         

@@ -1,5 +1,6 @@
 import java.awt.image.BufferedImage;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -86,5 +87,14 @@ public class MyTest {
 	@Test
 	public void testGetByName(){
 		System.out.println(userDAO.getCountByName("tom"));
+	}
+	
+	@Test
+	public void testSort(){
+		List<Integer> list = new ArrayList<>();
+		list.add(10);
+		list.add(5);
+		list.stream().sorted((x, y)-> -x-y).forEach(System.out::println);
+		list.stream().forEach(System.out::println);
 	}
 }

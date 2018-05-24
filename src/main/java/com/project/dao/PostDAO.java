@@ -12,4 +12,7 @@ public interface PostDAO {
 	Integer getMaxOrderOfPost(String postId);
 	void setPostVisualState(String postId, Byte state);
 	List<Post> getPostListByUserId(String userId);
+	Long getPostCountByCategoryId(String categoryId);
+	List<Post> getPostListByCategoryIdInPage(String categoryId,
+			int startRecord, int size);
 }

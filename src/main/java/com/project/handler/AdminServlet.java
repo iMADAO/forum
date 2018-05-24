@@ -13,7 +13,6 @@ import com.project.service.CategoryService;
 import com.project.service.ThemeService;
 
 public class AdminServlet extends HttpServlet{
-	private CategoryService categoryService = new CategoryService();
 	private ThemeService themeService = new ThemeService();
 	
 	@Override
@@ -23,10 +22,4 @@ public class AdminServlet extends HttpServlet{
 		request.setAttribute("themeDTOList", themeDTOList);
 		request.getRequestDispatcher("/WEB-INF/view/admin.jsp").forward(request, response);
 	}
-	
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-	}
-
 }
