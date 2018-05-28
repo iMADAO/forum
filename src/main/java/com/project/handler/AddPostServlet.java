@@ -78,7 +78,14 @@ public class AddPostServlet extends HttpServlet{
 	        InputStream input=part.getInputStream();
 	        System.out.println("inputStream-------------------" + input);
 	        //想要保存的目标文件的目录下
-	        String tagDir=getServletContext().getRealPath("/resource/image/");
+//	        String tagDir=getServletContext().getRealPath("/resource/image/");
+//	        System.out.println("1:--" + tagDir);
+//	        tagDir = getServletContext().getRealPath("/");
+//	        System.out.println("2:--" + tagDir);
+//	        tagDir+="resource/image/";
+//	        System.out.println("3:"  + tagDir);
+	        //实际在服务器的tomcat中配置为 /usr/local/image目录下，并映射为 /image/路径下的资源
+	        String tagDir = "/usr/local/image/";
 	        if(!Files.exists(Paths.get(tagDir))){
 	        	Files.createDirectories(Paths.get(tagDir));
 	        }
@@ -96,7 +103,7 @@ public class AddPostServlet extends HttpServlet{
 	        
 	        MessPic messPic = new MessPic();
 	        messPic.setPicId(KeyUtil.genUniquKey());
-	        messPic.setPicPath("resource/image/" + realFileName);
+	        messPic.setPicPath("/image/" + realFileName);
 	        messPic.setMessId(messageId);
 	        messPicService.addMessPic(messPic);
         }
