@@ -19,7 +19,8 @@ $(function(){
 })
 </script>
 </head>
-<body>
+<body align="center">
+<h4>欢迎来到论坛系统</h4>
 <input type="hidden" value=<%=request.getSession().getAttribute("tipMess") %> id="tipMess" />
 <c:remove var="tipMess" scope="session"/>
 <%request.getSession().setAttribute("lastPage", request.getContextPath() + "/index"); %>

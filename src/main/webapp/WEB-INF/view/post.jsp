@@ -6,6 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+body
+{
+      margin-left:auto;
+      margin-right:auto;
+      width:80%;
+   }
+</style>
 <script type="text/javascript" src="scripts/jquery-1.3.1.js"></script>
 <script type="text/javascript">
 
@@ -35,15 +43,17 @@ $(function(){
 </c:if>
 <a href="<%=request.getContextPath() %>/index">主页</a>
 <br/><br/>
+<div id="d" name="d">
 <c:forEach items="${requestScope.page.content }" var="messageDTO">
 	${messageDTO.postOrder }楼: <br/>
+	${messageDTO.username }:
 	${messageDTO.messContent }
 	<br/><br/>
 	<c:forEach items="${messageDTO.picPathList }" var="picPath">
 		<img src="${picPath }" width="200"/>
 	</c:forEach>
 	<br/>
-	发表于: ${messageDTO.createTime } <br/>
+	用户: ${messageDTO.username } &nbsp发表于: ${messageDTO.createTime } <br/>
 	<br/>
 	&nbsp&nbsp&nbsp&nbsp&nbsp
 		<c:forEach items="${messageDTO.replyList }" var="reply">
@@ -65,5 +75,6 @@ $(function(){
 <a href="<%=request.getContextPath() %>/post?postId=<%=request.getParameter("postId")%>&pageNo=${requestScope.page.totalPage }&pageSize=${requestScope.page.pageSize }">末页</a>
 
 <a href="<%=request.getContextPath() %>/appendMessage?postId=<%=request.getParameter("postId") %>">我要发言</a>
+</div>
 </body>
 </html>

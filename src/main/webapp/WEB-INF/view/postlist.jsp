@@ -6,6 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+body
+{
+      margin-left:auto;
+      margin-right:auto;
+      width:80%;
+   }
+</style>
 <script type="text/javascript" src="scripts/jquery-1.3.1.js"></script>
 <script type="text/javascript">
 
