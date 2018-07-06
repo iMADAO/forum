@@ -1,0 +1,1 @@
+使用java语言编写的论坛系统，基于javaweb技术，页面使用jstl标签和el表达式展示数据，使用mysql数据库，maven作为包管理工具。
